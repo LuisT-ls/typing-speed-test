@@ -1,0 +1,78 @@
+/* frontend/src/App.css */
+
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.typing-test {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.timer {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.text {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e2e2e2;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.scores-list {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
