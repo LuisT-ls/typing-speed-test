@@ -3,7 +3,7 @@
 import React from 'react'
 import TypingTest from './TypingTest'
 import ScoresList from './ScoresList'
-import './App.css'
+import './style/App.css'
 
 function App() {
   return (

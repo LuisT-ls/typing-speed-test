@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import Result from './Result'
-import './TypingTest.css'
+import './style/TypingTest.css'
 
 const sampleTexts = [
   'A vida é como andar de bicicleta. Para manter o equilíbrio, você deve continuar em movimento.',
