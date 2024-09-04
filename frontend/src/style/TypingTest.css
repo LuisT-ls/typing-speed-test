@@ -1,48 +1,68 @@
-/* frontend/src/style/TypingTest.css */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Source+Code+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap');
 
 :root {
-  --primary-color: #4a90e2;
-  --secondary-color: #f39c12;
-  --background-color: #f4f7fc;
-  --text-color: #333;
-  --light-gray: #e0e0e0;
+  --primary-color: #6366f1;
+  --secondary-color: #f59e0b;
+  --background-color: #f3f4f6;
+  --text-color: #1f2937;
+  --light-gray: #e5e7eb;
   --white: #ffffff;
-  --success-color: #2ecc71;
-  --error-color: #e74c3c;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  --background-color: #111827;
+  --text-color: #f9fafb;
+  --light-gray: #374151;
+  --white: #1f2937;
+  --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
 .typing-test {
-  max-width: 800px;
+  max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
   background-color: var(--white);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.test-area {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 h1 {
   color: var(--primary-color);
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
   text-align: center;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-weight: 600;
+  letter-spacing: -1px;
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
@@ -50,49 +70,58 @@ h1 {
 .difficulty-selector {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 label {
-  margin-right: 0.5rem;
-  font-weight: bold;
+  margin-right: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
 }
 
 select {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid var(--light-gray);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 2px solid var(--light-gray);
   background-color: var(--white);
+  color: var(--text-color);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .control-buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 button {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 600;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.start-btn {
+.start-btn,
+.resume-btn {
   background-color: var(--success-color);
   color: var(--white);
 }
@@ -102,14 +131,18 @@ button {
   color: var(--white);
 }
 
-.resume-btn {
-  background-color: var(--primary-color);
-  color: var(--white);
-}
-
 .reset-btn {
   background-color: var(--error-color);
   color: var(--white);
+}
+
+.settings-btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 
 button:hover {
@@ -124,10 +157,9 @@ button:disabled {
 
 .stats {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  font-weight: bold;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .timer,
@@ -136,9 +168,38 @@ button:disabled {
 .streak,
 .highest-streak {
   background-color: var(--light-gray);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
   text-align: center;
+  transition: all 0.3s ease;
+  margin: 0.5rem;
+  flex: 0 1 calc(33.333% - 1rem);
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer i,
+.wpm i,
+.accuracy i,
+.streak i,
+.highest-streak i {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.timer span,
+.wpm span,
+.accuracy span,
+.streak span,
+.highest-streak span {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
 }
 
 .progress-bar {
@@ -147,48 +208,62 @@ button:disabled {
   background-color: var(--light-gray);
   border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .progress-bar-fill {
   height: 100%;
-  background-color: var(--primary-color);
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   transition: width 0.3s ease;
 }
 
-.text {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  background-color: var(--light-gray);
-  padding: 1rem;
-  border-radius: 4px;
+.text,
+.input-area,
+.word-input {
   margin-bottom: 1rem;
+}
+
+.text {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.3rem;
+  line-height: 2;
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
   white-space: pre-wrap;
+  transition: all 0.3s ease;
 }
 
 .input-area,
 .word-input {
   width: 100%;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 1.2rem;
-  padding: 1rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1.3rem;
+  padding: 1.5rem;
   border: 2px solid var(--light-gray);
-  border-radius: 4px;
+  border-radius: 12px;
   resize: none;
   transition: all 0.3s ease;
+  background-color: var(--white);
+  color: var(--text-color);
 }
 
 .input-area:focus,
 .word-input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .falling-word {
   position: absolute;
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Fira Code', monospace;
   font-size: 1.5rem;
   color: var(--primary-color);
   animation-name: fall;
@@ -215,33 +290,87 @@ button:disabled {
 
 .result {
   background-color: var(--light-gray);
-  padding: 1.5rem;
-  border-radius: 8px;
+  padding: 2rem;
+  border-radius: 12px;
   margin-top: 2rem;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .result h2 {
   color: var(--primary-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
 }
 
 .result p {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
+  font-size: 1.3rem;
+  margin: 0.75rem 0;
+}
+
+.settings-panel {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+  transition: all 0.3s ease;
+}
+
+.settings-panel h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.theme-toggle,
+.sound-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.theme-toggle button,
+.sound-toggle button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+}
+
+.share-btn {
+  background-color: #405de6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.share-btn i {
+  margin-right: 0.5rem;
 }
 
 @media (max-width: 768px) {
   .typing-test {
-    padding: 1rem;
+    padding: 1.5rem;
+    margin: 1.5rem;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .stats {
+    display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
 
   .timer,
@@ -249,7 +378,8 @@ button:disabled {
   .accuracy,
   .streak,
   .highest-streak {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    flex: 1 1 100%;
   }
 
   .control-buttons {
@@ -257,6 +387,86 @@ button:disabled {
   }
 
   button {
-    width: calc(50% - 0.5rem);
+    width: 100%;
+    margin-bottom: 0.5rem;
   }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mode-selector,
+  .difficulty-selector {
+    margin-bottom: 1rem;
+  }
+
+  .settings-btn {
+    align-self: center;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.typing-test {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.result {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Highlight correct/incorrect typing */
+.correct {
+  color: var(--success-color);
+}
+
+.incorrect {
+  color: var(--error-color);
+  text-decoration: underline wavy;
+}
+
+/* Virtual Keyboard Styles */
+.virtual-keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-gray);
+  border-radius: 6px;
+  margin: 0 2px;
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.key.active {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
